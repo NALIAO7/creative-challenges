@@ -135,6 +135,42 @@
     color: #92400e;
   }
 
+  /* Alert box */
+  .alert-box {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #fef2f2 0%, #fff5f5 100%);
+    border: 1px solid #fecaca;
+    border-left: 4px solid #ef4444;
+    border-radius: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ef4444;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .alert-content {
+    font-size: 14px;
+    color: #7f1d1d;
+    line-height: 1.75;
+  }
+  .alert-content strong {
+    color: #991b1b;
+    font-weight: 600;
+  }
+
   /* Creative example block */
   .example-block {
     margin-top: 20px;
@@ -390,14 +426,8 @@
     </div>
     <div class="challenge-card">
       <p class="challenge-text">
-        大部分剧情走向过于线性，缺少<strong>开篇3秒内的强钩子</strong>设计，用户难以被快速留住。同时，游戏玩法的呈现方式偏复杂，解说或铺垫过长，核心爽感尚未释放观众已流失。
+        大部分真人剧情过于线性，<strong>缺乏前3秒强钩子</strong>，用户留存困难；玩法铺垫过长，核心爽感未释放即流失。建议<strong>提炼单一最强卖点</strong>，集中构建前3秒钩子，玩法压缩至15秒内。比如以下这条创意示范，问题在于：未聚焦钩子具体呈现，玩法描述过于抽象，且分镜设定与剧情简介冲突（如后期真人回切），导致钩子与玩法脱节，整体冲击力不足。
       </p>
-      <p class="challenge-text" style="margin-top:12px;">
-        建议先提炼单个最强卖点，围绕它构建前3秒钩子，玩法展示控制在<strong>15–20秒</strong>内完成。如下方创意所示，理论上采用"3秒钩子+游戏玩法"的结构，但实际未着力于前3秒钩子的呈现方式，玩法描述过于冗长，且未与钩子有效联动。
-      </p>
-      <div class="suggestion-box">
-        建议：先提炼最强卖点 → 围绕它构建前3秒钩子 → 玩法展示控制在15-20秒内。
-      </div>
     </div>
 
     <!-- Creative Example 2 -->
@@ -567,13 +597,14 @@
         建议按以下<strong>四种规格</strong>分别规划创意，适配不同投放渠道和受众耐心阈值：
       </p>
 
-      <div class="suggestion-grid">
-        <div class="sugg-card">
-          <span class="sugg-tag">3–5s</span>
-          <h4>短钩子 + 玩法快切</h4>
-          <p>AI 剧情 + 玩法，适合快速吸睛场景。如 Sparkhub 素材。</p>
-          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoFc0zQT8AUoAiwaDAIA" target="_blank">查看参考素材 →</a></div>
+      <div class="alert-box">
+        <div class="alert-icon">!</div>
+        <div class="alert-content">
+          <strong>重要约束：</strong>目前涉及到 8 球 AI 真人打球的画面主要是通过<strong>洗稿制作</strong>（投喂参考视频让 AI 重新生成），如果直接在创意中描述需要如何打球，<strong>可能无法生成</strong>。
         </div>
+      </div>
+
+      <div class="suggestion-grid">
         <div class="sugg-card">
           <span class="sugg-tag">~10s</span>
           <h4>中长钩子 + 核心玩法</h4>
@@ -587,12 +618,16 @@
           <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoH1Z0RK9AUoAiwaDAIA" target="_blank">查看参考素材 →</a></div>
         </div>
         <div class="sugg-card">
-          <span class="sugg-tag">纯玩法</span>
-          <h4>纯玩法展示（不含 AI 剧情）</h4>
-          <p>不含 AI 剧情，直接展示游戏本体爽感。</p>
-          <div class="sugg-link">
-            <a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAor6O1PzIAUoAiwaDAIA" target="_blank">查看参考素材 →</a>
-          </div>
+          <span class="sugg-tag">8BP制作</span>
+          <h4>AI Bot 录制 + 后期剪辑包装（8 球）</h4>
+          <p>8 Ball Pool：AI Bot 录屏 + 后期剪辑包装。</p>
+          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoAEsWxqxAUoAiwaDAIA" target="_blank">查看参考素材 →</a></div>
+        </div>
+        <div class="sugg-card">
+          <span class="sugg-tag">TM3D制作</span>
+          <h4>Fakegame 玩法 + 纯后期 AE（三消）</h4>
+          <p>Triple Match 3D：Fakegame 玩法录屏 + 纯 AE 后期制作。</p>
+          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAocOt03NUAUoAiwaDAIA" target="_blank">查看参考素材 →</a></div>
         </div>
       </div>
     </div>
