@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>当前素材创意的制作挑战</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-secondary: #555;
+    --text-light: #888;
+    --accent: #4f46e5;
+    --accent-light: #eef2ff;
+    --accent-border: #c7d2fe;
+    --warn: #f59e0b;
+    --warn-bg: #fffbeb;
+    --warn-border: #fde68a;
+    --example-bg: #f8fafc;
+    --example-border: #e2e8f0;
+    --tag-bg: #f1f5f9;
+    --divider: #e5e7eb;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,.08), 0 3px 10px rgba(0,0,0,.04);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #6366f1 100%);
+    color: #fff;
+    padding: 56px 24px 48px;
+    text-align: center;
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 40px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: .85;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+  .hero .badge-row {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero .badge {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Challenge card */
+  .challenge-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--divider);
+  }
+  .challenge-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+  .challenge-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .suggestion-box {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: #92400e;
+  }
+
+  /* Creative example block */
+  .example-block {
+    margin-top: 20px;
+    background: var(--example-bg);
+    border: 1px solid var(--example-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .example-header {
+    background: var(--tag-bg);
+    padding: 12px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--example-border);
+  }
+  .example-header .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .example-body {
+    padding: 20px 24px;
+  }
+  .example-subtitle {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 18px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-border);
+  }
+  .example-subtitle:first-child { margin-top: 0; }
+  .example-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    line-height: 1.8;
+  }
+  .example-body .label {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--text-secondary);
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .storyboard-list {
+    list-style: none;
+    padding: 0;
+  }
+  .storyboard-list li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--divider);
+  }
+  .storyboard-list li:last-child { border-bottom: none; }
+  .storyboard-list li strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .link-row {
+    font-size: 13px;
+    color: var(--text-light);
+    word-break: break-all;
+  }
+  .link-row a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .link-row a:hover { text-decoration: underline; }
+
+  /* Suggestion grid */
+  .suggestion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .sugg-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 20px;
+    border: 1px solid var(--divider);
+    box-shadow: var(--shadow);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .sugg-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .sugg-card .sugg-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .sugg-card:nth-child(1) .sugg-tag { background: #fef3c7; color: #92400e; }
+  .sugg-card:nth-child(2) .sugg-tag { background: #dbeafe; color: #1e40af; }
+  .sugg-card:nth-child(3) .sugg-tag { background: #d1fae5; color: #065f46; }
+  .sugg-card:nth-child(4) .sugg-tag { background: #fce7f3; color: #9d174d; }
+  .sugg-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .sugg-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .sugg-card .sugg-link {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--text-light);
+    word-break: break-all;
+  }
+  .sugg-card .sugg-link a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* Section 4 special - 三消 example */
+  .match3-block {
+    margin-top: 20px;
+    background: var(--example-bg);
+    border: 1px solid var(--example-border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .match3-block p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.85;
+  }
+  .match3-block .mt-label {
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 40px 0 0;
+    color: var(--text-light);
+    font-size: 13px;
+    border-top: 1px solid var(--divider);
+    margin-top: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .suggestion-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 24px; }
+    .section-title { font-size: 18px; }
+    .challenge-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>当前素材创意的制作挑战</h1>
+  <p>梳理当前创意素材制作中的四大核心问题，并附具体案例分析与优化建议</p>
+  <div class="badge-row">
+    <span class="badge">AI视频</span>
+    <span class="badge">玩法录屏</span>
+    <span class="badge">真人实拍</span>
+    <span class="badge">休闲游戏</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Challenge 1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">素材融合存在天然壁垒</div>
+    </div>
+    <div class="challenge-card">
+      <p class="challenge-text">
+        目前创意素材涉及<strong>AI视频、真实玩法录屏、真人实拍</strong>三种形式，三者在画风、光影、质感上差异显著。强行拼接到一条视频中容易产生割裂感，影响观看体验。建议在创意阶段明确主素材形态，围绕一种核心形式展开，而非被动拼贴。
+      </p>
+      <p class="challenge-text" style="margin-top:12px;">
+        如下方创意所示，素材核心看点是<strong>玩法</strong>，但剧情简介却在描述<strong>像素风格</strong>，像素风与玩法的结合方式尚不明确。
+      </p>
+      <div class="suggestion-box">
+        建议：创意阶段明确主素材形态，围绕一种核心形式展开，避免被动拼贴。
+      </div>
+    </div>
+
+    <!-- Creative Example 1 -->
+    <div class="example-block">
+      <div class="example-header">
+        <span class="dot"></span>
+        8 Ball Pool 创意示例
+      </div>
+      <div class="example-body">
+        <div class="example-subtitle">一、剧情简介</div>
+        <p>完整 8-bit 处理——像素风台面和球、芯片音乐、复古街机记分板和像素 combo 文字、CRT 扫描线。进球用街机式分数弹窗和过关号角声收尾。新增点：8-bit 是零先例的探索位，用当下正火的"故意业余剪辑"梗来降风险——刻意低保真、混乱剪辑正当红，让粗块像素读起来是"故意的、跟趋势的"而不是"廉价的"。</p>
+
+        <div class="example-subtitle">二、必要元素</div>
+        <p><span class="label">人物</span>无真人</p>
+        <p><span class="label">场景</span>像素风 8BP 台面，街机记分板</p>
+        <p><span class="label">行为</span>复古风格进球，命数计数制造赌注</p>
+        <p><span class="label">触发事件</span>最终进球触发 STAGE CLEAR</p>
+        <p><span class="label">人物反应</span>无</p>
+        <p><span class="label">核心看点</span>8-bit 复古 + 故意业余剪辑 + 像素溶解回真机</p>
+        <p><span class="label">镜头表现</span>街机固定视角 + 故意的粗糙跳切</p>
+        <p><span class="label">画面风格</span>像素芯片音 CRT 扫描线</p>
+        <p><span class="label">限制条件</span>底层玩法/combo/量化胜利/CTA 全部保持爆款标准（失败只归因主题层）</p>
+
+        <div class="example-subtitle">三、其他细节补充</div>
+        <p><span class="label">情绪爽感</span>怀旧 + 过关</p>
+        <p><span class="label">玩法类型</span>real（AI Bot shot1，套 8-bit 后期皮）</p>
+        <p><span class="label">视觉猎奇</span>8-bit + 故意业余剪辑</p>
+        <p><span class="label">目标受众</span>怀旧向 + 追梗受众</p>
+        <p><span class="label">说明</span>这是 16 条里唯一 0 爆款先例的探索位，业务明确要求过，只投一条</p>
+
+        <div class="example-subtitle">四、分镜明细</div>
+        <ul class="storyboard-list">
+          <li><strong>分镜 1（0–3s）</strong>：8-bit 开机，像素台面画入，芯片音，INSERT COIN</li>
+          <li><strong>分镜 2（3–20s）</strong>：复古风进球，街机记分板跳动，像素 combo 弹窗，命数计数</li>
+          <li><strong>分镜 3（20–27s）</strong>：最终进球 STAGE CLEAR + 高分录入 → 像素溶解回真实游戏</li>
+          <li><strong>分镜 4（27–30s）</strong>：PLAY NOW</li>
+        </ul>
+
+        <div class="example-subtitle">五、玩法录屏与 AI Bot 补充</div>
+        <p><span class="label">AI Bot</span>shot1，录屏后套 8-bit 像素 + 故意业余剪辑后期</p>
+        <p><span class="label">Prompt</span>8 Ball Pool 完整 8-bit 像素风，芯片音乐街机记分板像素 combo 文字 CRT 扫描线，故意低保真业余剪辑风格，进球街机分数弹窗，最终 STAGE CLEAR 高分录入后像素溶解回真实游戏，结尾 PLAY NOW</p>
+        <p><span class="label">负面提示</span>像素做得廉价而非故意、真实人脸、机械男声</p>
+        <p><span class="label">热梗原型</span>Deliberate Amateur Editing 梗（<a href="https://www.tiktok.com/@hyperstrides/video/7664729541385932054" target="_blank" style="color:var(--accent);">TikTok 链接</a>）</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">剧情结构偏平，钩子力度不足</div>
+    </div>
+    <div class="challenge-card">
+      <p class="challenge-text">
+        大部分剧情走向过于线性，缺少<strong>开篇3秒内的强钩子</strong>设计，用户难以被快速留住。同时，游戏玩法的呈现方式偏复杂，解说或铺垫过长，核心爽感尚未释放观众已流失。
+      </p>
+      <p class="challenge-text" style="margin-top:12px;">
+        建议先提炼单个最强卖点，围绕它构建前3秒钩子，玩法展示控制在<strong>15–20秒</strong>内完成。如下方创意所示，理论上采用"3秒钩子+游戏玩法"的结构，但实际未着力于前3秒钩子的呈现方式，玩法描述过于冗长，且未与钩子有效联动。
+      </p>
+      <div class="suggestion-box">
+        建议：先提炼最强卖点 → 围绕它构建前3秒钩子 → 玩法展示控制在15-20秒内。
+      </div>
+    </div>
+
+    <!-- Creative Example 2 -->
+    <div class="example-block">
+      <div class="example-header">
+        <span class="dot"></span>
+        8 Ball Pool 创意示例
+      </div>
+      <div class="example-body">
+        <div class="example-subtitle">剧情简介</div>
+        <p>一位女性玩家，她对镜头先宣布这一杆再打进，加一次失败的对手对比，把演员从装饰变成张力来源。这正是修掉 batch 1「演员演情绪而非制造张力」问题的结构。</p>
+
+        <div class="example-subtitle">二、必要元素</div>
+        <p><span class="label">人物</span>女性（仅前 3s）</p>
+        <p><span class="label">场景</span>前 3s 真实球桌，随后 8BP 游戏内</p>
+        <p><span class="label">行为</span>女性叫牌宣布这一杆 → 游戏内打进 → 对手一记失败对比</p>
+        <p><span class="label">触发事件</span>女性直视镜头，出杆前先叫牌</p>
+        <p><span class="label">人物反应</span>自信、笃定</p>
+        <p><span class="label">核心看点</span>叫牌命中 + 人物前 3s 钩子后让位玩法</p>
+        <p><span class="label">镜头表现</span>前 3s 真人手持，之后纯游戏画面，不再跳回</p>
+        <p><span class="label">画面风格</span>真人 UGC 手持 + 8BP 原生画面</p>
+        <p><span class="label">限制条件</span>真人段实拍，游戏段 AI Bot 录制进球 shot</p>
+
+        <div class="example-subtitle">三、其他细节补充</div>
+        <p><span class="label">情绪弧</span>宣言 → 命中 → 对手失败反衬</p>
+        <p><span class="label">是否有反转</span>轻反转（叫牌真命中）</p>
+        <p><span class="label">Gameplay</span>AI Bot 录女性叫的那一杆进球，以及对手一记失败的对比片段</p>
+        <p><span class="label">画面重点</span>叫牌命中那一刻、对手失败反衬</p>
+        <p><span class="label">剪辑重点</span>前 3s 真人后干脆让位；combo 文字跟随进球</p>
+        <p><span class="label">风险与避免</span>真人只占前 3s 不贯穿全片；不要让真人和游戏反复跳切</p>
+        <p><span class="label">市场</span>US 及英语区为主</p>
+        <p><span class="label">人群</span>泛 UA，休闲玩家，含女性向钩子层</p>
+        <p><span class="label">平台</span>iOS / Android</p>
+        <p><span class="label">情绪爽感</span>女性玩家先叫牌再精准命中的自信反差，加上对手失败反衬的解气。</p>
+        <p><span class="label">视觉猎奇</span>台球男性主导的印象被打破——一位女性直视镜头叫牌，说到做到。</p>
+        <p><span class="label">玩法类型</span>real（前 3s 女性实拍 + 游戏段 AI Bot 录制叫的那一杆）</p>
+
+        <div class="example-subtitle">四、分镜明细</div>
+        <ul class="storyboard-list">
+          <li><strong>分镜 1（0.0–3.0s）</strong>：女性在真球桌前直视镜头，出杆前先叫牌</li>
+          <li><strong>分镜 2（3.0–20.0s）</strong>：硬切游戏内，她叫的那一杆命中，combo 文字弹出，对手一记失败反衬</li>
+          <li><strong>分镜 3（20.0–27.0s）</strong>：她对镜头耸肩，筹码落袋</li>
+          <li><strong>分镜 4（27.0–30.0s）</strong>：PLAY NOW</li>
+        </ul>
+
+        <div class="example-subtitle">五、Prompt 与负面提示</div>
+        <p><span class="label">Prompt</span>真人段——温暖酒吧真实球桌，一位自信女性手持球杆直视镜头、手指向远袋口叫牌，手持 UGC 质感浅景深；游戏段——8BP 顶视，她叫的那颗球精准落袋弹 combo 文字，对手一记落空对比，PLAY NOW 收尾</p>
+        <p><span class="label">负面提示</span>不要真人贯穿全片；不要真人与游戏反复跳切；不要遮挡游戏屏幕；不要用真实名人面孔</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">制作分工尚未前置界定</div>
+    </div>
+    <div class="challenge-card">
+      <p class="challenge-text">
+        目前缺少对<strong>"哪部分由AI生成、哪部分由录屏完成、哪部分需后期包装"</strong>的明确划分，导致创意理解困难，执行中频繁返工、素材复用困难。建议在脚本阶段就标注制作方式，确保各环节衔接顺畅。
+      </p>
+      <p class="challenge-text" style="margin-top:12px;">
+        如下方素材所示，分镜明细展示的全是核心玩法，与剧情简介明显脱节——剧情简介中的内容无法在游戏玩法中实现，也难以找到结合方式，强行融合只会显得割裂。
+      </p>
+      <div class="suggestion-box">
+        建议：脚本阶段即标注每段素材的制作方式（AI生成/录屏/后期包装），确保各环节衔接顺畅。
+      </div>
+    </div>
+
+    <!-- Creative Example 3 -->
+    <div class="example-block">
+      <div class="example-header">
+        <span class="dot"></span>
+        8 Ball Pool 创意示例
+      </div>
+      <div class="example-body">
+        <div class="example-subtitle">创意描述</div>
+
+        <div class="example-subtitle" style="font-size:14px;">一、剧情简介</div>
+        <p>桌面中央立着 3–4 根会发光、带电击效果的弹柱。母球每碰到一根弹柱，速度和得分就往上翻一档（×1.5 → ×2.25 → ×3.4），一杆之内先清掉 A、B、D 三颗球，再打进黑八收尾。全程配一段一档一档往上升的"叮"音阶，这个递进音阶是这条创意的灵魂。核心看点是"一杆连锁清台 + 倍率越滚越大"的爽感。</p>
+
+        <div class="example-subtitle" style="font-size:14px;">二、必要元素</div>
+        <p><span class="label">人物</span>无真人，纯游戏画面</p>
+        <p><span class="label">场景</span>8BP 台面，桌心增加 3–4 根发光电击弹柱</p>
+        <p><span class="label">行为</span>母球一杆出击，连续碰撞弹柱并连续进球</p>
+        <p><span class="label">触发事件</span>母球每碰一次弹柱，触发一次加速 + 倍率提升</p>
+        <p><span class="label">人物反应</span>无（靠画面和音效制造爽感）</p>
+        <p><span class="label">核心看点</span>一杆清 A/B/D 三球 + 黑八，COMBO 最终 ×4</p>
+        <p><span class="label">镜头表现</span>跟球推镜，每次碰撞弹柱时轻微顿帧强调倍率跳变</p>
+        <p><span class="label">画面风格</span>干净鲜明，弹柱发光和电击特效突出</p>
+        <p><span class="label">限制条件</span>倍率文字、combo 文字居中；进球/碰撞音效压在接触帧；遵守玩法呈现四铁律</p>
+
+        <div class="example-subtitle" style="font-size:14px;">三、其他细节补充</div>
+        <p><span class="label">情绪爽感</span>连锁倍率滚雪球式上涨的极致爽感</p>
+        <p><span class="label">玩法类型</span>real（真实玩法，但是新机制，需要物理引擎支持，本周只交概念 + 分镜，成片约需三周）</p>
+        <p><span class="label">视觉猎奇</span>发光电击弹柱是 8BP 从未有过的桌面元素</p>
+        <p><span class="label">目标受众</span>喜欢台球 + 追求即时爽感的休闲竞技玩家</p>
+
+        <div class="example-subtitle" style="font-size:14px;">四、分镜明细</div>
+        <ul class="storyboard-list">
+          <li><strong>分镜 1（0–3s）</strong>：桌心弹柱发光亮起，母球拉杆蓄力，READY 或无字</li>
+          <li><strong>分镜 2（3–8s）</strong>：母球出击碰第一根弹柱，加速 ×1.5，第一颗球入袋，"叮"第一档</li>
+          <li><strong>分镜 3（8–13s）</strong>：连碰第二、三根弹柱，×2.25 → ×3.4，A/B/D 三球依次入袋，音阶升两档</li>
+          <li><strong>分镜 4（13–20s）</strong>：黑八入袋，COMBO ×4 特效居中炸开</li>
+          <li><strong>分镜 5（20–30s）</strong>：奖励结算 + PLAY NOW</li>
+        </ul>
+
+        <div class="example-subtitle" style="font-size:14px;">五、Prompt 与负面提示</div>
+        <p><span class="label">Prompt</span>8 Ball Pool 桌面中央竖着 3-4 根发光电击弹柱，母球一杆击出连续碰撞弹柱，每碰一次速度和得分倍率提升（1.5→2.25→3.4），一杆连续打进三颗彩球再打进黑八，居中显示 COMBO x4 特效，递进上升的叮叮音阶，镜头跟随母球推进，画面干净鲜明色彩饱和，结尾 PLAY NOW 绿色按钮</p>
+        <p><span class="label">负面提示</span>手遮挡屏幕、机械男声播报、combo 文字偏移、音效滞后、球杆最后一帧才出现、真实人脸</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge 4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">爆款逻辑与休闲玩法错配</div>
+    </div>
+    <div class="challenge-card">
+      <p class="challenge-text">
+        部分创意试图套用中重度游戏的<strong>"过去vs现在""反转对比"</strong>等爆款结构，但休闲游戏的核心体验是<strong>"单局爽感"</strong>，不存在需要被"拯救"的前置状态。强行套用会让广告脱离产品实际，反而不如直接展示"一杆进洞"的本体爽感来得有效。
+      </p>
+      <div class="suggestion-box">
+        建议：休闲游戏优先展示"单局爽感"本体，慎用中重度游戏的反转/对比结构。
+      </div>
+    </div>
+
+    <!-- Creative Example 4 - 三消 -->
+    <div class="example-block">
+      <div class="example-header">
+        <span class="dot"></span>
+        Triple Match 3D 创意示例
+      </div>
+      <div class="example-body">
+        <div class="example-subtitle">制作风格</div>
+        <p>1:1 克隆修复类爆款视频（真人修复实拍风），只换被修复的对象为 Triple Match 3D 棋盘。修复主题依定义贯穿全片。</p>
+
+        <div class="example-subtitle" style="font-size:14px;">克隆要求</div>
+        <p>完全照搬参考视频的破损特写开场、修复推进节奏、前后对比揭示、收尾定格与 CTA。唯一改动：被修复的不是那台车，而是一块破损碎裂的明亮 3D 卡通三消棋盘，随修复推进裂痕愈合、色彩回归，最终完整如新。时间轴提速：破损特写压到最前，修复动作/棋盘在 3-5s 内就开始、玩法录屏尽早接入（业务反馈：不要长过渡）。其余全部照搬原片。</p>
+
+        <div class="example-subtitle" style="font-size:14px;">玩法/录屏嵌入</div>
+        <p>棋盘修复如新后，接一小段可辨识三消真机录屏（点击 3 个同类合并消除、顶部带任务进度 MATCH THEM ALL 4/6），作为"被修好的游戏"自然呈现。</p>
+
+        <div class="example-subtitle" style="font-size:14px;">near-miss + 结尾</div>
+        <p>修复接近完成时故意停一拍（差最后一块没复原），最后一步完成修复；若接玩法录屏，则最后一组配对完成配 EC。字幕：CAN THIS BE SAVED? → ALMOST THERE → TRY IT YOURSELF</p>
+
+        <div class="example-subtitle" style="font-size:14px;">制作重点</div>
+        <p>照搬原爆款骨架是第一优先（骨架已被病毒验证），只替换被修复的对象；棋盘用 Triple Match 3D 式明亮 3D 卡通；修复"破损→完好"弧线跟紧原片但整体提速，棋盘/玩法 3-5s 内进入。</p>
+
+        <div class="example-subtitle" style="font-size:14px;">参考爆款原型</div>
+        <p>Bugatti 修复 159 万播放（GB，第 5 大市场）／破损齿轮修复 12.6 万，任选其一克隆。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suggestion Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num" style="background:var(--warn);">5</div>
+      <div class="section-title">建议：四种规格分别规划创意</div>
+    </div>
+    <div class="challenge-card">
+      <p class="challenge-text">
+        建议按以下<strong>四种规格</strong>分别规划创意，适配不同投放渠道和受众耐心阈值：
+      </p>
+
+      <div class="suggestion-grid">
+        <div class="sugg-card">
+          <span class="sugg-tag">3–5s</span>
+          <h4>短钩子 + 玩法快切</h4>
+          <p>AI 剧情 + 玩法，适合快速吸睛场景。如 Sparkhub 素材。</p>
+          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoZqAYyIt" target="_blank">查看参考素材 →</a></div>
+        </div>
+        <div class="sugg-card">
+          <span class="sugg-tag">~10s</span>
+          <h4>中长钩子 + 核心玩法</h4>
+          <p>中等时长钩子引入，紧接核心玩法展示。</p>
+          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoC063SwdAUoAiwaDAIA" target="_blank">查看参考素材 →</a></div>
+        </div>
+        <div class="sugg-card">
+          <span class="sugg-tag">~30s</span>
+          <h4>完整剧情 + 玩法插入</h4>
+          <p>真人剧情结合手持手机玩法插入，如 6 月 8 球和 Arrow 完整剧情视频。</p>
+          <div class="sugg-link"><a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoNlU0fkQ" target="_blank">查看参考素材 →</a></div>
+        </div>
+        <div class="sugg-card">
+          <span class="sugg-tag">纯玩法</span>
+          <h4>纯玩法展示（不含 AI 剧情）</h4>
+          <p>不含 AI 剧情，直接展示游戏本体爽感。</p>
+          <div class="sugg-link">
+            <a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoPSsPt6g" target="_blank">AI Bot 录屏</a> ·
+            <a href="https://drive.weixin.qq.com/s?k=AJEAIQdfAAoo5jr3XkAUoAiwaDAIA" target="_blank">后期制作</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    当前素材创意的制作挑战 · 内部文档
+  </div>
+
+</div>
+</body>
+</html>
